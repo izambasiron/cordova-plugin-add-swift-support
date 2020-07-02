@@ -12,7 +12,7 @@
 *
 *  - It updates the ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES build setting to YES.
 *
-*  - It updates the SWIFT_VERSION to 3.0.
+*  - It updates the SWIFT_VERSION to 5.1.
 */
 
 import fs from 'fs';
