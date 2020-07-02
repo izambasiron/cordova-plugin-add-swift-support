@@ -137,18 +137,13 @@ export default (context) => {
               console.log('Update IOS build setting LD_RUNPATH_SEARCH_PATHS to: @executable_path/Frameworks', 'for build configuration', buildConfig.name);
             }
 
-            if (typeof xcodeProject.getBuildProperty('SWIFT_VERSION', buildConfig.name) === 'undefined') {
-              if (config.getPreference('UseLegacySwiftLanguageVersion', 'ios')) {
-                xcodeProject.updateBuildProperty('SWIFT_VERSION', '2.3', buildConfig.name);
-                console.log('Use legacy Swift language version', buildConfig.name);
-              } else if (config.getPreference('UseSwiftLanguageVersion', 'ios')) {
-                const swiftVersion = config.getPreference('UseSwiftLanguageVersion', 'ios');
-                xcodeProject.updateBuildProperty('SWIFT_VERSION', swiftVersion, buildConfig.name);
-                console.log('Use Swift language version', swiftVersion);
-              } else {
-                xcodeProject.updateBuildProperty('SWIFT_VERSION', '3.0', buildConfig.name);
-                console.log('Update SWIFT version to 3.0', buildConfig.name);
-              }
+            if (config.getPreference('UseSwiftLanguageVersion', 'ios')) {
+              const swiftVersion = config.getPreference('UseSwiftLanguageVersion', 'ios');
+              xcodeProject.updateBuildProperty('SWIFT_VERSION', swiftVersion, buildConfig.name);
+              console.log('Use Swift language version', swiftVersion);
+            } else {
+              xcodeProject.updateBuildProperty('SWIFT_VERSION', '5.1', buildConfig.name);
+              console.log('Update SWIFT version to 5.1', buildConfig.name);
             }
 
             if (buildConfig.name === 'Debug') {
